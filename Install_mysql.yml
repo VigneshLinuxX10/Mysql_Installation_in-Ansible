@@ -1,0 +1,17 @@
+---
+- name:  Install mysql-server
+  hosts: web_server
+  become: yes
+  tasks:
+    - name: Install mysql-server
+      yum:
+        name: mysql-server
+        state: present
+        update_cache: yes
+
+    - name: Start and enable mysql-service
+      service:
+        name: mysqld
+        state: started
+        enabled: yes
+
